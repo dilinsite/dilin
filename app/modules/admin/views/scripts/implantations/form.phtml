@@ -1,0 +1,53 @@
+<div class="widget">
+    <div class="header"><span><span class="ico gray window"></span><?php echo $this->translate('implantations') ?></span></div>
+    <div class="content">
+        
+        <form enctype="multipart/form-data" name="formImplantations" id="formImplantations" action="<?php echo $this->form->getAction(); ?>" method="<?php echo $this->form->getMethod(); ?>">
+            <?php echo $this->form->implantation_id; ?>
+            
+            <div class="section">
+                <label><?php echo $this->translate('title') ?></label>   
+                <div><?php echo $this->form->title; ?></div>
+            </div>
+            <div class="section">
+                <label><?php echo $this->translate('contacts') ?></label>   
+            </div>
+            <div class="section">
+                <label><?php echo $this->translate('contacts > addresses') ?></label>   
+                <div><?php echo $this->form->address; ?></div>
+            </div>
+            <div class="section">
+                <label><?php echo $this->translate('contacts > service commerical') ?></label>   
+                <div><?php echo $this->form->service_address; ?></div>
+            </div>
+            <div class="section">
+                <label><?php echo $this->translate('contacts > Heures d\'ouverture') ?></label>
+                <div><?php echo $this->form->hour; ?></div>
+            </div>
+            <div class="section">
+                <label><?php echo $this->translate('TERMINAL CONTENEUR COMBINÉ > Général') ?></label>
+                <div><?php echo $this->form->general; ?></div>
+            </div>
+            <div class="section">
+                <label><?php echo $this->translate('TERMINAL CONTENEUR COMBINÉ > Domaines d’activités') ?></label>
+                <div><?php echo $this->form->activities; ?></div>
+            </div>
+            <div class="section">
+                <label><?php echo $this->translate('TERMINAL CONTENEUR COMBINÉ > Marchandises acceptées au transport') ?></label>
+                <div><?php echo trim($this->form->acceptance); ?></div>
+            </div>
+            <div class="section">
+                <label><?php echo $this->translate('TERMINAL CONTENEUR COMBINÉ > Liaisons ferroviaires') ?></label>
+                <div><?php echo $this->form->rails; ?></div>
+            </div>
+            <div class="section last">
+                <div><a class="uibutton submit_form" ><?php echo $this->translate('submit') ?></a></div>
+            </div>
+        </form>
+    </div>	
+</div>
+
+<script type="text/javascript">
+$(function() {
+});
+</script>

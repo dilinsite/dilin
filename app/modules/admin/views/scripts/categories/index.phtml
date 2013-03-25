@@ -1,0 +1,47 @@
+<hr>
+
+<a href="<?php echo $this->url(array('action'=>'add')) ?>">Add category</a>
+
+<div id="list_cat">
+	<table style="border: 1px solid #aaa; text-align: center;" width="100%">
+		<tr>
+			<th>Category ID</th>
+			<th>Parent ID</th>
+			<th>Category Name</th>
+			<th>Sort</th>
+			<th>Locked</th>
+			<th>Status</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<?php foreach ($this->categories as $category) {?>
+		<tr>	
+			<td><?php echo $category->category_id ?></td>
+			<td><?php echo $category->parent_id ?></td>
+			<td><?php echo $category->name ?></td>
+			<td><?php echo $category->sort ?></td>
+			<td><?php echo $category->locked ?></td>
+			<td><?php echo $category->status ?></td>
+			<td><a href="<?php echo $this->url(array('action'=>'edit', 'id'=>$category->category_id)) ?>">edit</a></td>
+			<td><a href="<?php echo $this->url(array('action'=>'delete', 'id'=>$category->category_id)) ?>">delete</a></td>
+		</tr>
+		<?php } ?>
+		
+	</table>
+</div>
+
+
+<style type="text/css">
+
+li {
+	list-style: none;
+}
+
+table {
+
+}
+
+table tr td, table tr th {
+	border: 1px solid #bbb;
+}
+</style>

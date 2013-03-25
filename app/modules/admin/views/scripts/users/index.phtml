@@ -1,0 +1,31 @@
+
+<a href="<?php echo $this->url(array('action'=>'edit','id'=>$this->user->user_id))?>" >Edit Profile</a>
+
+<table>
+	<tr>
+		<td>Username: </td>
+		<td><?php echo $this->user->username;?></td>
+	</tr>
+	<tr>
+		<td>Display name: </td>
+		<td><?php echo $this->user->display_name;?></td>
+	</tr>
+	<tr>
+		<td>Create Date: </td>
+		<td><?php echo $this->user->cdate;?></td>
+	</tr>
+	<tr>
+		<td>Last modified date: </td>
+		<td><?php echo $this->user->mdate;?></td>
+	</tr>
+	<tr>
+		<td>Last connected ip:</td>
+		<td><?php echo $this->user->ip;?></td>
+	</tr>
+	<tr>
+		<td>Status: </td>
+		<td><?php echo $this->user->status;?></td>
+	</tr>
+	
+</table>
+

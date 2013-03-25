@@ -1,0 +1,52 @@
+<div class="widget">
+    <div class="header"><span><span class="ico gray window"></span><?php echo $this->translate('jobs') ?></span></div>
+    <div class="content">
+        
+        <div id="UITab">
+            <ul class="tabs">
+                <li><a href="/admin/jobs"><?php echo $this->translate('list of jobs') ?></a></li>   
+                <li><a href="/admin/jobs/view/id/<?php echo $this->id ?>"><?php echo $this->translate('job detail') ?></a></li>
+                <li class="active"><a href="#"><?php echo $this->translate('edit job') ?></a></li>          
+            </ul>
+            <div class="tab_container">
+            </div>
+        </div>
+        
+        <form enctype="multipart/form-data" name="formJobs" id="formJobs" action="<?php echo $this->form->getAction(); ?>" method="<?php echo $this->form->getMethod(); ?>">
+            <?php echo $this->form->job_id; ?>
+            <div class="section">
+                <label><?php echo $this->translate('language') ?> <small><?php echo $this->translate('Mandatory') ?>.</small></label>   
+                <div><?php echo $this->form->language; ?></div> 
+            </div>
+            <div class="section" >
+                <label>Title <small>Mandatory.</small></label>   
+                <div><?php echo $this->form->title; ?></div>
+            </div>
+            <div class="section">
+                <label>Categories <small>Mandatory.</small></label>   
+                <div><?php echo $this->form->job_category_id; ?></div> 
+            </div>
+            <div class="section">
+                <label>Description <small>Mandatory.</small></label>   
+                <div><?php echo $this->form->description; ?></div> 
+            </div>
+            <div class="section">
+                <label>Reference <small>Mandatory.</small></label>   
+                <div><?php echo $this->form->reference; ?></div> 
+            </div>	    
+            <div class="section">
+                <label>Status <small>Mandatory.</small></label>   
+                <div><?php echo $this->form->status; ?></div> 
+            </div>
+            <div class="section last">
+                <div><a class="uibutton submit_form" >Submit</a></div>
+            </div>
+        </form>
+    </div>	
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('ul.tabs li:first').removeClass('active');
+});
+</script>

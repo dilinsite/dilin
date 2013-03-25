@@ -1,0 +1,70 @@
+<div class="widget" >
+	<div class="header"><span ><span class="ico gray arrow_bidirectional"></span><?php echo $this->translate('jobs') ?></span></div>
+	<div class="content">
+		<div id="UITab">
+			<ul class="tabs" >
+				<li ><a href="#tab2"><?php echo $this->translate('list of jobs') ?></a></li>            
+			</ul>
+			<div class="tab_container">
+				<div id="tab2" class="tab_content"> 
+					<div class="load_page">
+						<ul class="uibutton-group">
+                                                        <li style="margin-right: 10px; margin-top: -5px;">
+                                                            <select name="language" id="language">
+                                                                <option value="fr" <?php echo ($this->language  == 'fr')?'selected="selected"':''?>><?php echo $this->translate('french') ?></option>
+                                                                <option value="en" <?php echo ($this->language  == 'en')?'selected="selected"':''?>><?php echo $this->translate('english') ?></option>
+                                                                <option value="all" <?php echo ($this->language  == 'all')?'selected="selected"':''?>><?php echo $this->translate('all') ?></option>
+                                                            </select>
+                                                        </li>
+                                                        <li><a href="<?php echo $this->url(array('action' => 'add')); ?>" class="uibutton icon add" title="Add a Job"><?php echo $this->translate('Add a Job') ?></a></li>
+                                                </ul>
+						<div class="tableName toolbar">
+							<h3>List</h3>
+							<table class="display data_table2" id="jobs">
+								<thead>
+									<tr>
+										<th align="left"><?php echo $this->translate('Title') ?></th>
+                                                                                <th><?php echo $this->translate('language') ?></th>
+                                                                                <th><?php echo $this->translate('Category') ?></th>
+                                                                                <th><?php echo $this->translate('reference') ?></th>
+                                                                                <th><?php echo $this->translate('Created Date') ?></th>
+                                                                                <th><?php echo $this->translate('Status') ?></th>
+                                                                                <th><?php echo $this->translate('Actions') ?></th>
+									</tr>
+								</thead>
+								<tbody>
+								<?php foreach($this->jobs as $job): ?>
+									<tr>
+                                                                            <td align="left"><a href="<?php echo $this->url(array('action'=>'view', 'id'=>$job->job_id))?>"><?php echo $job->title;?></a></td>
+                                                                            <td><?php echo $job->language; ?></td>
+                                                                            <td><?php echo $job->job_category_name; ?></td>
+                                                                            <td><?php echo $job->reference ?></td>
+                                                                            <td><?php echo date('d/m/Y H:i:s',  strtotime($job->cdate));?></td>
+                                                                            <td><?php echo $this->translate($job->status); ?></td>
+                                                                            <td class="center">
+                                                                                    <span class="tip"><a href="<?php echo $this->url(array('action' => 'edit', 'id' => $job->job_id), 'default'); ?>" title="Editer"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/icon/icon_edit.png" ></a></span> 
+                                                                                            <span class="tip"><a href="<?php echo $this->url(array('action' => 'delete', 'id' => $job->job_id), 'default'); ?>" class="delete" name="<?php echo $this->escape($job->title); ?>" title="Supprimer"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/icon/icon_delete.png"></a></span>						        			
+                                                                            </td>
+                                                                    </tr>
+								<?php endforeach; ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#language').change(function(){
+            if ($(this).val() == 'all')
+                window.location.href='<?php echo $this->url(array('module'=>'admin', 'controller' => 'jobs', 'action'=>'index'), 'default', true); ?>'
+            else
+                window.location.href='<?php echo $this->url(array('module'=>'admin', 'controller' => 'jobs'), 'default', true); ?>/'+$(this).val();		
+        })
+    })
+</script>

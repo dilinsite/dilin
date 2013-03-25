@@ -1,0 +1,30 @@
+				
+				
+				<div id="<?php echo $this->body; ?>" class="block row">
+				
+					<div class="inner row">
+						
+						<h3><?php echo $this->postRow['title']; ?></h3>
+						
+						<!-- <p class="image"><img src="<?php echo $this->baseUrl(); ?>/medias/images/grey.gif" alt="" width="668" height="322"></p> -->
+						
+						<div class="content row">
+							<?php echo $this->postRow['content']; ?>
+						</div>
+						
+						<?php if($this->resourcesRowset->count() > 0 ): ?>
+						
+						<ul class="files row">
+							<?php foreach($this->resourcesRowset as $value): ?>
+							<?php $filesize = $this->formatBytes(filesize(APP_PATH . '/../medias/images/uploads/resources/' . $value['filename'])); ?>
+							<li class="row document"><a href="<?php echo $this->baseUrl(); ?>/medias/images/uploads/resources/<?php echo $value['filename']; ?>"><?php echo $value['filename']; ?> (<?php echo $filesize; ?>)</a></li>
+							<?php endforeach; ?>
+						</ul>
+						
+						<?php endif; ?>
+						
+					</div>
+				
+				</div>
+
+				

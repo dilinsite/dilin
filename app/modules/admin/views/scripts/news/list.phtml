@@ -1,0 +1,14 @@
+<div id="news">
+	<ul>
+		<?php foreach ($this->focusRowset as $value){?>
+		<li>
+				<span class=date><?php echo $value->rdate;?></span>
+				<span><a href="/admin/news/show/id/<?php echo $value->post_id;?>"><?php echo $value->title;?></a></span>
+				<span><a href="/admin/news/edit/id/<?php echo $value->post_id;?>">Edit</a></span>
+				<span><a href="/admin/news/delete/id/<?php echo $value->post_id;?>">Delete</a></span>
+				<p><?php echo $value->description;?></p>
+		</li>
+			<?php }?>
+		</ul>
+	<?php echo $this->paginationControl($this->focusRowset, 'Sliding', 'pagination/pagination.phtml'); ?>
+</div>

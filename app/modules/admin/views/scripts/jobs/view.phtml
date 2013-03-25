@@ -1,0 +1,52 @@
+<div class="widget">
+    <div class="header"><span><span class="ico gray window"></span><?php echo $this->translate('jobs') ?></span></div>
+    <div class="content">
+        <div id="UITab">
+            <ul class="tabs" >
+                <li ><a href="/admin/jobs">List of Jobs</a></li>   
+                <li class="active"><a href="#tab2">Job Detail</a></li>          
+            </ul>
+            <div class="tab_container"></div>
+            <div id="jobDetail">
+                <ul>
+                    <li>
+                        <div id="jobTitle"><?php echo $this->job->title ?>
+                            <div style="float:right;">
+                                <span class="tip"><a href="<?php echo $this->url(array('action' => 'edit', 'id' => $this->job->job_id), 'default'); ?>" title="Editer"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/icon/icon_edit.png" ></a></span> 
+                                <span class="tip"><a href="<?php echo $this->url(array('action' => 'delete', 'id' => $this->job->job_id), 'default'); ?>" class="delete" name="<?php echo $this->escape($this->job->title); ?>" title="Supprimer"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/icon/icon_delete.png"></a></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li><label>Created Date</label><?php echo date('d/m/Y H:i:s', strtotime($this->job->cdate)); ?></li>
+                    <li><label>Description</label><?php echo $this->job->description; ?></li>
+                    <?php if ($this->job->reference) { ?>
+                    <li><label>Reference</label><?php echo $this->job->reference; ?></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style type="text/css">
+#jobDetail ul li {
+	margin: 10px 0 20px 0;
+}
+#jobDetail ul li label {
+	font-weight: bold;
+	display: block;
+	width: auto;
+}
+#jobTitle {
+	font-size: 20px;
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('ul.tabs li:first').removeClass('active');
+	});
+</script>

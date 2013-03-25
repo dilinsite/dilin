@@ -1,0 +1,14 @@
+<div id="news">
+	<ul>
+		<?php foreach ($this->focusRowset as $value){?>
+		<li>
+				
+				<span><a href="/admin/categories/show/id/<?php echo $value->category_id;?>"><?php echo $value->name;?></a></span>
+				<span><a href="/admin/categories/edit/id/<?php echo $value->category_id;?>">Edit</a></span>
+				<span><a href="/admin/categories/delete/id/<?php echo $value->category_id;?>">Delete</a></span>
+				
+		</li>
+			<?php }?>
+		</ul>
+	<?php echo $this->paginationControl($this->focusRowset, 'Sliding', 'pagination/pagination.phtml'); ?>
+</div>

@@ -1,0 +1,66 @@
+<div class="widget" >
+    <div class="header"><span ><span class="ico gray arrow_bidirectional"></span><?php echo $this->translate('news') ?></span></div>
+    <div class="content">
+        <div id="UITab">
+            <ul class="tabs" >
+                <li><a href="#tab2"><?php echo $this->translate('list of news') ?></a></li>            
+            </ul>
+            <div class="tab_container">
+                <div id="tab2" class="tab_content"> 
+                    <div class="load_page">
+                        <ul class="uibutton-group">
+                            <li style="margin-right: 10px; margin-top: -5px;">
+                                <select name="language" id="language">
+                                    <option value="fr" <?php echo ($this->language  == 'fr')?'selected="selected"':''?>><?php echo $this->translate('french') ?></option>
+                                    <option value="en" <?php echo ($this->language  == 'en')?'selected="selected"':''?>><?php echo $this->translate('english') ?></option>
+                                    <option value="all" <?php echo ($this->language  == 'all')?'selected="selected"':''?>><?php echo $this->translate('all') ?></option>
+                                </select>
+                            </li>
+                            <li><a href="<?php echo $this->url(array('action' => 'add')); ?>" class="uibutton icon add" title="Add News"><?php echo $this->translate('add news') ?></a></li>
+                            </ul>
+                        <div class="tableName toolbar">
+                            <h3><?php echo $this->translate('list') ?></h3>
+                            <table class="display data_table2">
+                                <thead>
+                                        <tr>
+                                            <th align="left"><?php echo $this->translate('title') ?></th>
+                                            <th><?php echo $this->translate('language') ?></th>
+                                            <th><?php echo $this->translate('release date') ?></th>
+                                            <th><?php echo $this->translate('created date') ?></th>
+                                            <th><?php echo $this->translate('Aactions') ?></th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <?php foreach ($this->posts as $post) { ?>
+                                        <tr>
+                                            <td align="left"><a href="<?php echo $this->url(array('module'=>'default', 'controller'=>'news', 'action'=>'view', 'id'=>$post->post_id))?>"><?php echo $post->title; ?></a></td>
+                                            <td><?php echo $post->language ?></td>
+                                            <td><?php echo date('d/m/Y H:i:s', strtotime($post->rdate)) ?></td>
+                                            <td><?php echo date('d/m/Y H:i:s', strtotime($post->cdate)) ?></td>
+                                            <td class="center">
+                                                <span class="tip"><a href="<?php echo $this->url(array('action' => 'edit', 'id' => $post->post_id), 'default'); ?>" title="Editer"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/icon/icon_edit.png" ></a></span> 
+                                                        <span class="tip"><a href="<?php echo $this->url(array('action' => 'delete', 'id' => $post->post_id), 'default'); ?>" class="delete" name="<?php echo $this->escape($post->title); ?>" title="Supprimer"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/icon/icon_delete.png"></a></span>						        			
+                                        </td>
+                                </tr>
+                                        <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#language').change(function(){
+            if ($(this).val() == 'all')
+                window.location.href='<?php echo $this->url(array('module'=>'admin', 'controller' => 'news', 'action'=>'index'), 'default', true); ?>'
+            else
+                window.location.href='<?php echo $this->url(array('module'=>'admin', 'controller' => 'news'), 'default', true); ?>/'+$(this).val();		
+        })
+    })
+</script>

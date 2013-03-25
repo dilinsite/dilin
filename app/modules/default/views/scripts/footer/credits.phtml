@@ -1,0 +1,50 @@
+
+
+<div class="image_layer image_layer_big">
+    <div class="mask_layer">
+        <div class="text_layer_small">
+            <div id="text_container" class="footer-credits">
+                <div class="title">crédits</div>
+                <div class="block">
+                    <div class="label">Conception & création graphique</div>
+                    <div class="fields">
+                        <ul>
+                            <li>ADN Atelier Design</li>
+                            <li>www.adnatelierdesign.fr</li>
+                            <li>+33 6 08 35 56 95</li>
+                        </ul>
+                    </div>
+                </div>
+                    
+                <div class="block">
+                    <div class="label">Développement & intégration</div>
+                    <div class="fields">
+                        <ul>
+                            <li>Carburant</li>
+                            <li>www.carburant.fr</li>
+                            <li>+33 1 44 61 95 60</li>
+                        </ul>
+                    </div>
+                </div>
+                    
+                <div class="block">
+                    <div class="label">Développement webservices</div>
+                    <div class="fields">
+                        <ul>
+                            <li>ITNovem</li>
+                            <li>www.itnovem.com</li>
+                            <li>+33 1 48 13 92 00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('div#core .image_layer').css('background', 'transparent url(/medias/images/bg/<?php echo $this->controller . "_" . $this->action ?>.jpg) no-repeat 0 center');
+    var content = $('#breadcrumbs .inner').html() + 'credits';
+    $('#breadcrumbs .inner').html(content);
+});
+</script>

@@ -1,0 +1,76 @@
+				
+				
+				<div id="<?php echo $this->body; ?>" class="block row">
+				
+					<div class="inner row">
+						
+						<?php if($this->lastRowset->count() > 0): ?>
+						
+						<ul class="focus row">
+						
+							<?php $i = 1; ?>
+							<?php foreach($this->lastRowset as $value): ?>
+						
+							<?php if($i == 1): ?>
+						
+							<li class="row">
+								<h3><a href="<?php echo $this->url(array('controller' => 'posts', 'action' => 'post', 'id' => $value['post_id']), $value['rewrite_link']); ?>"><?php echo $value['title']; ?></a></h3>
+								
+								<?php $filename = $this->getCrop($value['crop_coords']); ?>
+								<?php if($filename): ?>
+								<img src="<?php echo $this->baseUrl(); ?>/medias/images/uploads/posts/<?php echo $filename; ?>" alt="<?php echo $this->escape($value['title']); ?>" width="246" height="183">
+								<?php endif; ?>
+								
+								<p><?php echo $this->wordLimiter($this->stripTags($value['content']), 70); ?></p>
+							</li>
+							
+							<?php else: ?>
+							
+							<li class="row">
+								<?php $filename = $this->getCrop($value['crop_coords']); ?>
+								<?php if($filename): ?>
+								<img src="<?php echo $this->baseUrl(); ?>/medias/images/uploads/posts/<?php echo $filename; ?>" alt="<?php echo $this->escape($value['title']); ?>" width="174" height="129">
+								<?php endif; ?>
+								
+								<h3><a href="<?php echo $this->url(array('controller' => 'posts', 'action' => 'post', 'id' => $value['post_id']), $value['rewrite_link']); ?>"><?php echo $value['title']; ?></a></h3>
+								<p><?php echo $this->wordLimiter($this->stripTags($value['content']), 50); ?></p>
+							</li>
+							
+							<?php endif; ?>
+							
+							<?php $i++; ?>
+							<?php endforeach; ?>
+						
+						</ul>
+						
+						<?php else: ?>
+						
+						<div class="nothing row">Aucun article dans cette catégorie</div>
+						
+						<?php endif; ?>
+						
+
+						<?php if($this->postsRowset->count() > 0): ?>
+						
+						<ul class="others row">
+						
+							<?php foreach($this->postsRowset as $value): ?>
+						
+							<li class="row">
+								<h3><a href="<?php echo $this->url(array('controller' => 'posts', 'action' => 'post', 'id' => $value['post_id']), $value['rewrite_link']); ?>"><?php echo $value['short_title']; ?></a> :</h3>
+								<p><?php echo $value['short_content']; ?></p>
+							</li>
+						
+							<?php endforeach; ?>
+							
+						</ul>
+						
+						<?php echo $this->paginationControl($this->postsRowset, 'Sliding', 'posts/pagination.phtml'); ?>
+												
+						<?php endif; ?>
+						
+					</div>
+				
+				</div>
+
+				

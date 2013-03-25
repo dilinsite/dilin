@@ -1,0 +1,51 @@
+<div class="widget">
+    <div class="header"><span><span class="ico gray window"></span><?php echo $this->translate('news') ?></span></div>
+    <div class="content">
+        <div id="UITab">
+            <ul class="tabs" >
+                <li><a href="/admin/news"><?php echo $this->translate('list of news') ?></a></li>   
+                <li class="active"><a href="#tab2"><?php echo $this->translate('news detail') ?></a></li>          
+            </ul>
+            <div class="tab_container"></div>
+            <div id="newsDetail">
+                <ul>
+                    <li>
+                        <div id="newsTitle"><?php echo $this->news->title ?>
+                            <div style="float:right;">
+                                    <span class="tip"><a href="<?php echo $this->url(array('action' => 'edit', 'id' => $this->news->post_id), 'default'); ?>" title="Editer"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/icon/icon_edit.png" ></a></span> 
+                                    <span class="tip"><a href="<?php echo $this->url(array('action' => 'delete', 'id' => $this->news->post_id), 'default'); ?>" class="delete" name="<?php echo $this->escape($this->news->title); ?>" title="Supprimer"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/icon/icon_delete.png"></a></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li><label>Created Date</label><?php echo date('d/m/Y H:i:s', strtotime($this->news->cdate)); ?></li>
+                    <li><label>Release Date</label><?php echo date('d/m/Y H:i:s', strtotime($this->news->rdate)); ?></li>
+                    <li><label>Content</label><?php echo $this->news->content; ?></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+	
+
+
+
+
+<style type="text/css">
+#newsDetail ul li {
+	margin: 10px 0 20px 0;
+}
+#newsDetail ul li label {
+	font-weight: bold;
+	display: block;
+	width: auto;
+}
+
+#newsTitle {
+	font-size: 20px;
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('ul.tabs li:first').removeClass('active');
+	});
+</script>

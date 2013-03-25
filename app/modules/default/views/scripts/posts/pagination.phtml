@@ -1,0 +1,22 @@
+
+			<?php if ($this->pageCount > 1): ?>	
+			<div class="row pagination">
+				<ul class="row">
+				
+					<?php if (isset($this->previous)): ?>
+					<li><a href="<?php echo $this->url(array('page' => $this->previous)); ?>"> &lt; </a></li>
+					<?php endif; ?>
+					
+					<?php foreach ($this->pagesInRange as $page): ?>
+					
+					<li<?php if ($page == $this->current): ?> class="selected"<?php endif;?>><a href="<?php echo $this->url(array('page' => $page)); ?>"><?php echo $page; ?></a></li>
+					
+					<?php endforeach; ?>
+					
+					<?php if (isset($this->next)): ?>
+					<li><a href="<?php echo $this->url(array('page' => $this->next)); ?>"> &gt; </a></li>
+					<?php endif; ?>
+					
+				</ul>
+			</div>
+			<?php endif; ?>

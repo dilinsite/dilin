@@ -1,0 +1,27 @@
+
+<?php if ($this->pageCount > 1): ?>	
+<div class="row pagination">
+	<ul class="row">
+		<?php if (isset($this->previous)) { ?>
+			<li><a href="<?php echo $this->url(array('page' => $this->previous)); ?>" class="paginate_enabled_previous">Previous</a></li>
+		<?php } else { ?>
+			<li><a class="paginate_disabled_previous">Previous</a></li>	
+		<?php } ?>
+	
+		<?php foreach ($this->pagesInRange as $page) { ?>
+			<?php if ($page == $this->current) { ?>
+				<!-- 
+				<li><a href="<?php echo $this->url(array('page' => $page)); ?>" class="paging_full_numbers paginate_button paginate_active"><?php echo $page ?></a></li>
+				-->
+			<?php } ?>		
+		<?php } ?>
+					
+		<?php if (isset($this->next)) { ?>
+			<li><a href="<?php echo $this->url(array('page' => $this->next)); ?>" class="paginate_enabled_next">Next</a></li>
+		<?php } else { ?>
+			<li><a class="paginate_disabled_next">Next</a></li>	
+		<?php } ?>
+					
+	</ul>
+</div>
+<?php endif; ?>

@@ -1,0 +1,175 @@
+<div class="image_layer image_layer_smaller">
+    <div class="mask_layer">
+        <div class="text_layer_bigger">
+            <div id="text_container" class="<?php echo $this->controller . '_' . $this->action ?>">
+                <div class="title_block">
+                    <div class="left">DEMANDE DE TARIFICATION</div>
+                    <div class="right">
+                        <label>Service Pricing Paris</label>
+                        <ul>
+                            <li>+ 33 (0)1 41 05 33 12</li>
+                            <li><a href="mailto: grp_pricing@naviland-cargo.com">grp_pricing@naviland-cargo.com</a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <?php if (isset($this->success_message)) { ?> 
+                    <div id="success-quote">
+                        <?php echo $this->success_message; ?>
+                   </div>
+                <?php } else { ?>
+                <div class="form" id="quote-form">
+                    <form action="<?php echo $this->url(array('controller'=>'services', 'action'=>'quotation'), 'default') ?>" method="post" enctype="application/x-www-form-urlencoded" id="form-quote">
+                        <div class="section left">
+                            <div class="row">
+                                <label>
+                                    <span class="label">Societe</span>
+                                    <span class="field"><?php echo $this->form->societe ?></span>
+                                </label>
+                            </div>
+                            <div class="row">
+                                <label>
+                                    <span class="label">Adresse</span>
+                                    <span class="field"><?php echo $this->form->adresse ?></span>
+                                </label>
+                            </div>
+                            <div class="row">
+                                <label>
+                                    <span class="label">Contact</span>
+                                    <span class="field"><?php echo $this->form->contact ?></span>
+                                </label>
+                            </div>
+                            <div class="row">
+                                <label>
+                                    <span class="label">Telephone</span>
+                                    <span class="field"><?php echo $this->form->telephone ?></span>
+                                </label>
+                            </div>
+                            <div class="row">
+                                <label>
+                                    <span class="label">Fax</span>
+                                    <span class="field"><?php echo $this->form->fax ?></span>
+                                </label>
+                            </div>
+                            <div class="row">
+                                <label>
+                                    <span class="label">Mail</span>
+                                    <span class="field"><?php echo $this->form->mail ?></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="section right">
+                            <div class="block">
+                                <div class="two-third">
+                                    <label>
+                                        <span class="label">Type de transport</span>
+                                        <span class="field"><?php echo $this->form->type_de_transport ?></span>
+                                    </label>
+                                </div>
+                                <div class="one-third">
+                                    <label>
+                                        <span class="label">Sens</span>
+                                        <span class="field"><?php echo $this->form->sens ?></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <span class="label bold">Relation demandée</span>
+                                <div class="row">
+                                    <div class="left">
+                                        <label>
+                                            <span class="label">Départ</span>
+                                            <span class="field"><?php echo $this->form->depart ?></span>
+                                        </label>
+                                    </div>
+                                    <div class="right">
+                                        <label>
+                                            <span class="label">Arrivée</span>
+                                            <span class="field"><?php echo $this->form->arrivee ?></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="left">
+                                        <label>
+                                            <span class="label">Positionnement</span>
+                                            <span class="field"><?php echo $this->form->positionnement ?></span>
+                                        </label>
+                                    </div>
+                                    <div class="right">
+                                        <label>
+                                            <span class="label">TRO/ZIP</span>
+                                            <span class="field"><?php echo $this->form->zip ?></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <span class="label bold">Information UTI</span>
+                                <div class="row left">
+                                    <label>
+                                        <span class="label">Quantité</span>
+                                        <span class="field"><?php echo $this->form->quantite ?></span>
+                                    </label>
+                                </div>
+                                <div class="row middle">
+                                    <label>
+                                        <span class="label">Poids Brut</span>
+                                        <span class="field"><?php echo $this->form->poids_brut ?></span>
+                                    </label>
+                                </div>
+                                <div class="row right">
+                                    <label>
+                                        <span class="label">Type</span>
+                                        <span class="field"><?php echo $this->form->type ?></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <span class="label">Marchandise dangereuse</span>
+                                <div class="row left">
+                                    <label>
+                                        <span class="label">Classe</span>
+                                        <span class="field"><?php echo $this->form->classe ?></span>
+                                    </label>
+                                </div>
+                                <div class="row middle">
+                                    <label>
+                                        <span class="label">ONU</span>
+                                        <span class="field"><?php echo $this->form->onu ?></span>
+                                    </label>
+                                </div>
+                                <div class="row right">
+                                    <label>
+                                        <span class="label">Masse</span>
+                                        <span class="field"><?php echo $this->form->masse ?></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <div class="full">
+                                    <div class="three-fourth">
+                                        <label>
+                                            <span class="label">Observation</span>
+                                            <span class="field"><?php echo $this->form->observation ?></span>
+                                        </label>
+                                    </div>
+                                    <div class="btn one-fourth" onclick="$('#form-quote').submit(); " ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('div#core .image_layer').css('background', 'transparent url(/medias/images/bg/<?php echo $this->controller . "_" . $this->action ?>.jpg) no-repeat 0 center');
+    
+    <?php if (isset($this->depart)) { ?>
+        $('#depart').val('<?php echo $this->depart ?>');
+    <?php } ?>
+});
+</script>

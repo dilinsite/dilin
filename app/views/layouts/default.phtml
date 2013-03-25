@@ -1,20 +1,56 @@
 <!doctype html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>DiLin大头</title>
-    <link rel="icon" href="<?php echo $this->baseUrl(); ?>/public/images/favicon.png">
+    <link rel="icon" href="<?php echo $this->baseUrl(); ?>/medias/images/favicon.png">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/css/layout.css">
     <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/css/default.css">
     <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/css/jquery-ui.css" />
     <script type="text/javascript">
         var baseUrl = '<?php echo $this->baseUrl(); ?>';
     </script>
     <script src="<?php echo $this->baseUrl() ?>/public/js/jquery-1.9.1.min.js"></script>
-   
+    <script src="<?php echo $this->baseUrl() ?>/public/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/public/js/script.js"></script>
+      
 </head>
+
 <body>
-    This site will be up shortly.
-    <script src="<?php echo $this->baseUrl(); ?>/public/js/plugins.js"></script>
-    <script src="<?php echo $this->baseUrl(); ?>/public/js/script.js"></script>
+    <div id="body-wrapper">
+        
+        <!-- start header -->
+        <div id="header">
+            <div id="header-wrapper">
+                <div id="header-title">
+                    <a href="/">
+                        <div id="title-one">DI LIN</div>
+                        <div id="title-two"></div>
+                        <div id="title-three"></div>
+                    </a>
+                </div>
+	        <div id="logo"><img src="/medias/images/logo.png"></div>
+            </div> 
+            <div id="breadcrumbs">
+                <div id="breadcrumbs-wrapper">
+                    <a href="/">HOME</a> 
+                </div>
+            </div>
+        </div>
+        <!-- end header -->
+        
+        
+        <!-- start main -->
+        <div id="main">
+            <div id="main-wrapper">
+            <?php echo $this->layout()->content; ?>
+            </div>
+        </div>
+        <!-- end main -->
+        
+        
+        
+    </div>
+    
 </body>
 </html>

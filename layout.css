@@ -1,0 +1,137 @@
+      
+
+/* GENERAL STUFF */
+/* ============= */
+
+body {
+	behavior:url("csshover.htc");
+	background: #FFF;
+	margin: 0; /* zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* centre the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	}
+	
+#container {
+	width: 1000px; /* was 780px, Ben */
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	text-align: left; /* this overrides the text-align: center on the body element. */
+	}
+
+.divider {
+	margin:0;
+	clear:both;
+	background-color:#FFFFFF;
+	height:1px;
+	 /* the next two because ie6 won't set height to less than the fontsize */
+	font-size:0 ;
+	overflow:hidden;
+	}
+
+
+/* HEADER */
+/* ====== */
+#header {
+	
+	height:100px;
+	background-image:url(../images/blank.jpg);
+	margin: 0;
+	padding: 0;
+	}
+   
+
+#header #topleft {
+    float:left;
+    width:20%;
+    font-style:italic;
+    text-align:left;
+	text-decoration: none
+}
+ 
+#header #topright {
+    float:right;
+    width:20%;
+   
+    font-style:italic;
+    text-align:right;
+	text-decoration: none
+}
+
+#header h1 {
+	
+	padding: 35px 0 0 0; /* top margin to get the heading into the blob */
+	
+	
+	
+	margin-bottom: 0 ; /* no bottom margin to allow the strapline to fit underneath */
+	}
+
+#header p {
+	margin: 0 ; /* no margin or padding so it fits snugly under the heading */
+	padding: 0 ;
+	}
+
+/* MENU */
+/* ==== */
+
+/* see separate file - menu.css */
+
+
+/* MAIN AREA */
+/* ========= */
+
+#main {
+	margin: 0;
+	padding: 0 60px; /* remember padding counts towards width! */
+	background-image:url(../images/blank-middle.jpg);
+	}
+
+#main .random {
+	margin-top: 20px ;
+
+	}
+	
+#main .image-right {
+	clear:both;
+	float:right;
+	margin:10px 0 15px 10px ;
+	border: 1px solid #FFF ;
+	border-width: 1px 0 ;
+	padding: 5px 5px 7px 5px ;
+	}
+
+/* Gallery */
+table.thumbs a,
+table.thumbs a img {
+	border: 0px solid #666 ;
+	margin-top:10px;
+	margin-bottom:10px ;
+	}
+
+/* About */
+
+p.AdminLink {
+	display:none ;
+	text-align:right !important ;
+	}
+p.AdminLink a{
+	color:#EEE;
+	text-align:right;
+	text-decoration:none;
+	}
+.p-about p.AdminLink {
+	display:block;
+	}
+
+/* FOOTER */
+/* ====== */	
+
+#footer {
+	padding: 25px 40px ;
+	background-image:url(../images/blank-bottom.jpg);
+	background-repeat:no-repeat;
+	}
+
+#footer p {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 10px 0; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+	}

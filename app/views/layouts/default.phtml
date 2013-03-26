@@ -22,18 +22,25 @@
         <!-- start header -->
         <div id="header">
             <div id="header-wrapper">
-                <div id="header-title">
-                    <a href="/">
-                        <div id="title-one">DI LIN</div>
-                        <div id="title-two"></div>
-                        <div id="title-three"></div>
-                    </a>
+                <div id="header-title">DI LIN</div>
+                <div id="header-menu">
+                    <ul>
+                        <li><a href="">主页</a></li>
+                        <li><a href="">博客</a></li>
+                        <li><a href="">二手转让</a></li>
+                        <li><a href="">照片</a></li>
+                        <li><a href="">联系</a></li>
+                    </ul>
                 </div>
-	        <div id="logo"><img src="/medias/images/logo.png"></div>
+	        
             </div> 
             <div id="breadcrumbs">
                 <div id="breadcrumbs-wrapper">
-                    <a href="/">HOME</a> 
+                    <a href="/">HOME</a>
+                    
+                    <?php if (isset($this->controller)) { ?>
+                        > <?php echo $this->controller ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>

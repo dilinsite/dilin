@@ -18,17 +18,51 @@ body {
 
 /*header*/
 #header {
-    height: 140px;
+    height: 160px;
     width: 100%;
 }
 
 #header-wrapper {
     background-color:#ffffff;
     width: 1000px;
-    height: 100px;
+    height: 120px;
     margin: 0 auto;
     display: block;
-    
+}
+
+#header-title {
+    float: left;
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    width: 150px;
+    margin-top: 40px;
+}
+
+#header-menu {
+    padding-top: 40px;
+}
+
+#header-menu ul {
+}
+
+#header-menu ul li {
+    list-style: none;
+    letter-spacing: 2px;
+    float: left;
+    margin-left: 50px;
+}
+
+#header-menu ul li a{
+    font-size: 22px;
+}
+
+#header-menu ul li a:hover{
+    text-decoration: underline;
+}
+
+#header-menu ul li.active a {
+    color: #222;
 }
 
 #breadcrumbs {
@@ -45,6 +79,10 @@ body {
     margin: 0 auto;
     font-size: 16px;
     letter-spacing: 0.1em;
+}
+
+#breadcrumbs, #breadcrumbs a {
+    text-transform: uppercase;
 }
 
 #main {

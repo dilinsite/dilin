@@ -1,5 +1,26 @@
 
+.main-content-title
+{
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #c6c6c6;
+    padding: 30px 0 10px 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
 #daigouTable
 {
-    
+
 }
+
+#logo {
+    width: 80px;
+    margin-top: 20px;
+    border: 1px solid red;
+}
+
+#logo img {
+    height: 80px;
+}
+

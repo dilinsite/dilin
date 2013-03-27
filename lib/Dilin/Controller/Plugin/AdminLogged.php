@@ -14,8 +14,7 @@ class Dilin_Controller_Plugin_AdminLogged extends Zend_Controller_Plugin_Abstrac
         		$layout = Zend_Layout::getMvcInstance();
         		$view = $layout->getView();
         		$view->username = $auth->getIdentity()->username;
-        		$view->displayname = $auth->getIdentity()->display_name;
-                        $view->user_id = $auth->getIdentity()->user_id;
+                        $view->id = $auth->getIdentity()->id;
         	} else {
         		if($controller != 'login') {
         			$redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');

@@ -3,7 +3,7 @@
 class Model_DbTable_ShoppingLists extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'shopping_lists';
+    protected $_name = 'daigous';
 	
     protected $_primary = 'id';
 	

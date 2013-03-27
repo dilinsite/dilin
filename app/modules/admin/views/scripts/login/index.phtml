@@ -1,93 +1,56 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
 <head>
-	<meta charset="utf-8" />
-	<title>Carburant admin version 1.0 online</title>
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link href="<?php echo $this->baseUrl(); ?>/medias/admin/css/zice.style.css" rel="stylesheet" type="text/css" />
-	<link href="<?php echo $this->baseUrl(); ?>/medias/admin/css/icon.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl(); ?>/medias/admin/components/tipsy/tipsy.css" media="all"/>
-	<style type="text/css">
-		html {
-			background-image: none;
-		}
-		label.iPhoneCheckLabelOn span {
-			padding-left:0px
-		}
-		#versionBar {
-			background-color:#212121;
-			position:fixed;
-			width:100%;
-			height:35px;
-			bottom:0;
-			left:0;
-			text-align:center;
-			line-height:35px;
-			z-index:11;
-		}
-		.copyright {
-			text-align:center; font-size:10px; color:#CCC;
-		}
-		.copyright a {
-			color:#A31F1A; text-decoration:none
-		}    
-	</style>
-	
-	<?php if(count($this->messages) > 0): ?>
-	<script>
-		setTimeout('showError("Identification erronée. Veuillez réitérer votre identification.")', 1000);
-	</script>
-	<?php endif; ?>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>DiLin大头</title>
+    <link rel="icon" href="<?php echo $this->baseUrl(); ?>/medias/images/favicon.png">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="<?php echo $this->baseUrl(); ?>/public/images/dee-2010-04.jpg">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/css/docs.css" />
+    <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/css/default.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/css/jquery-ui.css" />
+    <script type="text/javascript">
+        var baseUrl = '<?php echo $this->baseUrl(); ?>';
+    </script>
+    <script src="<?php echo $this->baseUrl() ?>/public/js/jquery-1.9.1.min.js"></script>
+    <script src="<?php echo $this->baseUrl() ?>/public/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/public/js/script.js"></script>
 </head>
+
 <body>
-         
-<div id="alertMessage" class="error"></div>
-<div id="successLogin"></div>
-<div class="text_success"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/loadder/loader_green.gif"  alt="Carburant" /><span>Please wait</span></div>
 
-<div id="login" >
-	<!-- <div class="ribbon"></div> -->
-	<div class="inner">
-		<div class="logo"><img src="<?php echo $this->baseUrl(); ?>/medias/admin/images/logo/logo_login.png" alt="Carburant Admin" /></div>
-		<div class="formLogin">
-			<form enctype="multipart/form-data" name="formLogin" id="formLogin" action="<?php echo $this->loginForm->getAction(); ?>" method="<?php echo $this->loginForm->getMethod(); ?>">
-
-				<div class="tip"><?php echo $this->loginForm->username; ?></div>
-				<div class="tip"><?php echo $this->loginForm->password; ?></div>
-
-				<div class="loginButton">
-					<div style="float:right; padding:3px 0; margin-right:-12px;">
-						<div> 
-							<ul class="uibutton-group">
-								<li><input type="submit" id="but_login" class="uibutton normal" value="Login"></li>
-								<!-- <li><a class="uibutton normal" href="#" id="forgetpass">forgetpass</a></li> -->
-							</ul>
-						</div>
-			  
- 					</div>
-					<div class="clear"><?php echo $this->loginForm->hash; ?></div>
-		 	 	</div>
-
-			</form>
-		</div>
-	</div>
-	<div class="clear"></div>
-	<div class="shadow"></div>
-</div>
-
-<div class="clear"></div>
-<div id="versionBar" >
-	<div class="copyright"> &copy; Copyright 2012  All Rights Reserved <span class="tip"><a  href="http://www.carburant.fr/" target="_blank" title="Carburant Admin" >Carburant</a> </span> </div>
-</div>
-
-<!-- Link JScript-->
-<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/medias/admin/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/medias/admin/components/effect/jquery-jrumble.js"></script>
-<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/medias/admin/components/ui/jquery.ui.min.js"></script>     
-<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/medias/admin/components/tipsy/jquery.tipsy.js"></script>
-<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/medias/admin/components/checkboxes/iphone.check.js"></script>
-<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/medias/admin/js/logincheck.js"></script>
+    <div id="container" align="center">
+        <div class="formLoginErrors"></div>
+            
+            <form id="formLogin" class="form-horizontal well loginForm" enctype="multipart/form-data" action="<?php echo $this->url(array('controller' => 'login', 'action' => 'process', 'module' => 'admin'), 'default', true) ?>" method="post">
+                <fieldset>
+                    <legend>User Login<p>If you do not have an account, you can get one for free by <a href="#" class="btn disabled">registering</a>.</p></legend>
+                    <div class="control-group">
+                        <label class="control-label">Username</label>
+                        <div class="controls">
+                            <?php echo $this->form->username ?>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Password</label>
+                        <div class="controls">
+                            <?php echo $this->form->password ?>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input type ="submit" name="submit" value="Submit" class="btn btn-primary btn-large" id="formLoginBtnSubmit">
+                        <a href='javascript:history.go(-1)' class="btn btn-large">Cancel</a>
+                    </div>
+                </fieldset>
+            </form>
+   </div>
 </body>
 </html>
+
+<script type="text/javascript">
+$(document).ready(function(){
+        //
+        
+});    		
+</script>

@@ -1,10 +1,15 @@
 <?php
 
 class Admin_LinksController extends Zend_Controller_Action {
+    
+    
 
 	public function init() {
+            
 		$this->view->selectedLinks = true;
 	}
+        
+        
 	
 	public function indexAction() {
 		$table_jobs = new Admin_Model_DbTable_Jobs();

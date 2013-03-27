@@ -1,20 +1,28 @@
 <?php
 
-class Admin_Model_DbTable_Users extends Zend_Db_Table_Abstract {
-	/**
+class Admin_Model_DbTable_Users extends Zend_Db_Table_Abstract 
+{
+	
+        
+        /**
 	 * Table name
 	 * 
 	 * @var string
 	 */
-	protected $_name = 'site_user';
-	
+	protected $_name = 'users';
+
+        
+        
 	/**
 	 * Primary ID
 	 * 
 	 * @var string
 	 */
-	protected $_primary = 'user_id';
+	protected $_primary = 'id';
 	
+        
+        
+        
 	/**
 	 * Username
 	 * 
@@ -34,8 +42,9 @@ class Admin_Model_DbTable_Users extends Zend_Db_Table_Abstract {
 	 * 
 	 * @return string
 	 */
-	public function getTableName() {
-		return $this->_name;
+	public function getTableName() 
+        {
+            return $this->_name;
 	}
 	
 	/**
@@ -43,9 +52,8 @@ class Admin_Model_DbTable_Users extends Zend_Db_Table_Abstract {
 	 *
 	 * @return string
 	 */
-	public function getPrimaryKey() {
-		//$cols = $this->info('cols');
-		//return $cols[0];
+	public function getPrimaryKey() 
+        {
 		return $this->_primary;
 	}
 	
@@ -100,7 +108,7 @@ class Admin_Model_DbTable_Users extends Zend_Db_Table_Abstract {
 	 * @return the user row or null 
 	 */
 	public function getUser($id) {
-		return $this->fetchRow('user_id = ' . (int)$id);
+		return $this->fetchRow('id = ' . (int)$id);
 	}
 
 	/**
@@ -113,7 +121,7 @@ class Admin_Model_DbTable_Users extends Zend_Db_Table_Abstract {
 	 */
 	public function editUser($id, $data) {
 		if ($data) {
-			$where = $this->getAdapter()->quoteInto('user_id = ?', (int)$id);
+			$where = $this->getAdapter()->quoteInto('id = ?', (int)$id);
 			return $this->update($data, $where);
 		}
 		return false;

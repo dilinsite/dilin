@@ -1,31 +1,51 @@
 <?php
-//Sell_!@2012
+
 class Admin_LoginController extends Zend_Controller_Action
 {
-	private $_auth = null;
-	
-	/**
-	 * Initialisation Zend Auth
-	 * 
-	 * @return void
-	 */
+
+        
+        private $_auth = null;
+
+        
+        
 	public function init()
 	{
 		$this->_auth = Zend_Auth::getInstance();
 		$this->_helper->getHelper('layout')->disableLayout();
 		$this->view->messages = $this->_helper->getHelper('FlashMessenger')->getMessages();
 	}
+        
+        
 
-	/**
-	 * Index Action (afficher le formulaire)
-	 * 
-	 * @return void
-	 */
 	public function indexAction()
 	{
-		$this->view->loginForm = $this->_getForm();
+            $this->view->form = $this->_getForm();
 		
 	}
+        
+        
+        public function processAction()
+        {
+            
+            $this->_helper->getHelper('viewRenderer')->setNoRender();
+            
+            if ($this->_request->isXmlHttpRequest()) {
+                
+                $data = $this->_request->getPost();
+                $form = $this->_getForm();
+                
+                if ($form->isValid($data)) {
+                    if ($this->_processAuth($data)) {
+                        $this->_helper->json(array('status' => 1, 'data' => $data));
+                    } else {
+                        $this->_helper->json(array('status' => 0, 'message' => 'error occurred while processing the account authentication.'));
+                    }
+                } else {
+                    $this->_helper->json(array('status' => 0, 'message' => 'We do not recognize your login information. Please try again.'));
+                }
+            }
+        
+        }
 	
 	/**
 	 * Not implemented yet
@@ -34,14 +54,18 @@ class Admin_LoginController extends Zend_Controller_Action
 	{
 	}
 	
+        
+        
 	/**
-	 * Process d'identification
+	 * Process login form
 	 * 
 	 * @return void
 	 */
-	public function processAction()
+	public function processNoAjaxAction()
 	{
+            
 		$this->_helper->getHelper('viewRenderer')->setNoRender();
+                
 		$request = $this->getRequest();
 		
 		if (!$request->isPost()) {
@@ -53,12 +77,13 @@ class Admin_LoginController extends Zend_Controller_Action
 		if ($this->_processAuth($request->getPost()) && $form->isValid($request->getPost())) {
 			$this->_helper->redirector('index', 'dashboard');
 		} else {
-			$this->_helper->getHelper('FlashMessenger')->addMessage('Identification erronée. Veuillez réitérer votre identification.');
+			$this->_helper->getHelper('FlashMessenger')->addMessage('We do not recognize your login information. Please try again.');
 			$this->_helper->redirector('index');
 		}
 
 	}
-	
+        
+
 	/**
 	 * Logout Action
 	 * 
@@ -72,6 +97,8 @@ class Admin_LoginController extends Zend_Controller_Action
 		$this->_helper->redirector('index');
 	}
 	
+        
+        
 	/**
 	 * Config Zend Auth
 	 * 
@@ -103,6 +130,7 @@ class Admin_LoginController extends Zend_Controller_Action
 		$adapter->setCredential($values['password']);
 		
 		$auth = Zend_Auth::getInstance();
+                
 		$result = $auth->authenticate($adapter);
 		
 		if ($result->isValid()) {
@@ -110,14 +138,14 @@ class Admin_LoginController extends Zend_Controller_Action
 			
 			$user = $adapter->getResultRowObject(array(
 				$usersTable->getPrimaryKey(),
-				$usersTable->getIdentityColumn(),
-				'display_name'
+				$usersTable->getIdentityColumn()//,
+			//	'display_name'
 			));
 			
 			$usersTable->update(array(
-					'last_connect' => new Zend_Db_Expr('NOW()'),
-					'ip' =>  $this->getRequest()->getClientIp()
-			), array('user_id = ?' => $user->user_id));
+					'last_login_ts' => new Zend_Db_Expr('NOW()'),
+					//'ip' =>  $this->getRequest()->getClientIp()
+			), array('id = ?' => $user->id));
 				
 			$auth->getStorage()->write($user);
 			return true;
@@ -127,19 +155,16 @@ class Admin_LoginController extends Zend_Controller_Action
 	}
 	
 	/**
-	 * Recupere le formulaire
-	 * 
+	 * Login Form
 	 * @return Zend_Form
 	 */
 	private function _getForm()
 	{
-		$loginForm = new Admin_Form_Login_Login(array(
-            'action' => '/admin/login/process',
-            'method' => 'post'
-        ));
+            $loginForm = new Admin_Form_Login_Login(array(
+                'action' => '/admin/login/process',
+                'method' => 'post'
+            ));
 		
-		
-		
-		return $loginForm;
+            return $loginForm;
 	}
 }

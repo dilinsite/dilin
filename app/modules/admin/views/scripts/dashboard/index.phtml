@@ -5,13 +5,14 @@
             
             <?php if ($this->categories) { ?>
 
-                <table class="display" id="table-dashboard-categories">
+                <table class="display" id="table-name-categories">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Controller</th>
                             <th>Name</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -22,12 +23,23 @@
                             <td><?php echo $row['controller'] ?></td>
                             <td><?php echo $row['name'] ?></td>
                             <td><?php echo $row['status'] ?></td>
+                            <td><a href="#" class="edit-row" id="edit-row-<?php echo $row['id'] ?>">edit</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>
                     </table>
             <?php } ?>
         </div>
+    </div>
+</div>
+<div class="form-edit-table" style="display: none;">
+    <div class="block">
+        <label>Category</label>
+        <div>categorydd</div>
+    </div>
+    <div class="block">
+        <label>Category</label>
+        <div>categorydd</div>
     </div>
 </div>
 
@@ -37,9 +49,22 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-    $( "#table-dashboard-categories" ).dialog({
+    
+    $(".edit-row").click(function(e){
+        e.preventDefault();
+        var id = $(this).attr('id').substr(9);
+        //$('.dialog-edit-table').empty();
+        $('.form-edit-table').dialog('open');
+    });
+    
+    $(".form-edit-table" ).dialog({
+        autoOpen: false,
       modal: true,
+      title: 'EDIT',
       buttons: {
+        Cancel: function() {
+          $( this ).dialog( "close" ); 
+        },
         Ok: function() {
           $( this ).dialog( "close" );
         }

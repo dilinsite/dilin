@@ -2,28 +2,16 @@
 
 class Model_DbTable_Categories extends Zend_Db_Table_Abstract
 {
-	/**
-	 * Nom de la table
-	 * @var string
-	 */
-	protected $_name = 'site_category';
+
+    protected $_name = 'categories';
 	
-	/**
-	 * Nom de la clef primaire
-	 * @var string
-	 */
-	protected $_primary = 'category_id';
+    protected $_primary = 'id';
 	
-	/**
-	 * Recupere toutes les categories
-	 * 
-	 * @return Zend_Db_Table_Rowset
-	 */
-	public function getCategories()
-	{
-		$select = $this->select()->where('is_active = ?', 1)->order('sort ASC');
-		return $this->fetchAll($select);
-	}
+    public function getCategories()
+    {
+        $sql = "SELECT * FROM categories WHERE status = '1'";
+        return $this->_db->query($sql)->fetchAll();
+    }
 	
 	/**
 	 * Recupere tous les enfants par son parent ID

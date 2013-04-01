@@ -1,0 +1,49 @@
+<div class="dashboard">
+    <div class="dashboard-wrapper">
+        
+        <div class="content-block">
+            
+            <?php if ($this->categories) { ?>
+
+                <table class="display" id="table-dashboard-categories">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Controller</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($this->categories as $row) { ?>
+                        <tr>
+                            <td><?php echo $row['id'] ?></td>
+                            <td><?php echo $row['controller'] ?></td>
+                            <td><?php echo $row['name'] ?></td>
+                            <td><?php echo $row['status'] ?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                    </table>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/components/datatables/dataTables.css" />
+<script src="<?php echo $this->baseUrl() ?>/public/components/datatables/dataTables.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $( "#table-dashboard-categories" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+});
+</script>

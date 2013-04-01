@@ -28,6 +28,7 @@
             </div> 
             <div id="navigation">
                 <ul>
+                    <li <?php if ($this->dashboardSelected) { ?> class="active" <?php } ?>><a href="/admin">DASHBOARD</a></li>
                     <li <?php if ($this->indexSelected) { ?> class="active" <?php } ?>><a href="/admin">HOME</a></li>
                     <li <?php if ($this->blogsSelected) { ?> class="active" <?php } ?>><a href="/admin/blogs">BLOG</a></li>
                     <li <?php if ($this->galleriesSelected) { ?> class="active" <?php } ?>><a href="/admin/galleries">GALLERIES</a></li>

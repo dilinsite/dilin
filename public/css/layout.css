@@ -68,7 +68,7 @@ body {
 
 #navigation {
     float:left;
-    width: 800px;
+    width: 930px;
     margin-top:38px;
 }
 
@@ -135,15 +135,20 @@ body {
     font-size: 16px;
 }
 
-.index-wrapper, .others-wrapper, .albums-wrapper {
+.dashboard, .index-wrapper, .others-wrapper, .albums-wrapper {
     width: 1000px;
     float: left;
+    min-height: 10px;
     background: url('/public/images/bg/bg-light.jpg') repeat;
+}
+
+.dashboard-wrapper {
+    padding: 30px 20px;
 }
 
 .albums-wrapper ul {
     width: 100%;
-    height: 150px;
+    height: 170px;
     padding: 30px 30px 30px 10px;
     float: left;
 }

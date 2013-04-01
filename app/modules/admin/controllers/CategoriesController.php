@@ -4,7 +4,7 @@ class Admin_CategoriesController extends Zend_Controller_Action
 {
 	
 	public function init() {
-		$this->view->selectedCategories = true;
+		$this->view->CategoriesSelected = true;
 	}
 
 	public function indexAction()

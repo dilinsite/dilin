@@ -1,14 +1,14 @@
 <?php
 
-class Admin_ImplantationsController extends Zend_Controller_Action 
+class Admin_DashboardController extends Zend_Controller_Action 
 {
     
-    public function init() {
-        $this->table = new Admin_Model_DbTable_Implantations();
+    public function init() 
+    {
+        $this->view->dashboardSelected = true;
     }
     
     public function indexAction() {
-        $this->view->implantations = $this->table->getImplantations();
     }
     
     public function cnoAction() {

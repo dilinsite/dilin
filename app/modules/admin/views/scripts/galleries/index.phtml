@@ -1,0 +1,11 @@
+<div class="albums">
+    <div class="albums-wrapper">
+        <ul>
+        <?php foreach ($this->albums as $album) { ?>
+            <li><img src="/public/images/photos/<?php echo $album['name']; ?>/cover_<?php echo $album['seq'] ?>.jpg"></li>
+        <?php } ?>
+        </ul>
+    </div>
+    
+       
+</div>

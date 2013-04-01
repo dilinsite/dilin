@@ -22,26 +22,18 @@
         
         <!-- start header -->
         <div id="header">
-            <div id="header-wrapper">
+            <div id="header-wrapper" style="width: 700px;">
                 <div id="header-title">DI LIN</div>
-                <div id="header-menu">
-                    <ul style="margin: 0 auto;">
-                        <li><a href="">HOME</a></li>
-                        <li><a href="">PHOTOS</a></li>
-                        <li><a href="">SALES</a></li>
-                        <li><a href="">ACTIVITIES</a></li>
-                        <li><a href="">CONTACT</a></li>
-                    </ul>
-                </div>
+                <div id="header-title-small"><div>Tel: (+86)156-0188-5772</div><div>Email: <a href="mailto:contact@di-lin.com">contact@di-lin.com</a></div></div>
             </div> 
             <div id="navigation">
-                    <ul>
-                        <li <?php if ($this->indexSelected) { ?> class="active" <?php } ?>><a href="/">HOME</a></li>
-                        <li <?php if ($this->blogsSelected) { ?> class="active" <?php } ?>><a href="/blogs">BLOG</a></li>
-                        <li <?php if ($this->salesSelected) { ?> class="active" <?php } ?>><a href="/sales">SALES</a></li>
-                        <li <?php if ($this->photosSelected) { ?> class="active" <?php } ?>><a href="/photos">PHOTOS</a></li>
-                        <li <?php if ($this->projectsSelected) { ?> class="active" <?php } ?>><a href="/projects">PROJECTS</a></li>
-                        <li <?php if ($this->contactSelected) { ?> class="active" <?php } ?>><a href="/contact">CONTACT ME</a></li>
+                <ul>
+                    <li <?php if ($this->indexSelected) { ?> class="active" <?php } ?>><a href="/">HOME</a></li>
+                    <li <?php if ($this->blogsSelected) { ?> class="active" <?php } ?>><a href="/blogs">BLOG</a></li>
+                    <li <?php if ($this->photosSelected) { ?> class="active" <?php } ?>><a href="/photos">PHOTOS</a></li>
+                    <li <?php if ($this->projectsSelected) { ?> class="active" <?php } ?>><a href="/projects">PROJECTS</a></li>
+                    <li <?php if ($this->contactSelected) { ?> class="active" <?php } ?>><a href="/contact">CONTACT</a></li>
+                    <li <?php if ($this->othersSelected) { ?> class="active" <?php } ?>><a href="/others">OTHERS</a></li>
                 </ul>
             </div>
         </div>

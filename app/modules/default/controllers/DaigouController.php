@@ -5,6 +5,7 @@ class DaigouController extends Zend_Controller_Action
     
     public function init()
     {
+        $this->view->othersSelected = true;
         
         $this->_table = new Model_DbTable_ShoppingLists();
         $this->view->controller = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();

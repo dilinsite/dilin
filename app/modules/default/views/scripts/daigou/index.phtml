@@ -1,5 +1,9 @@
-
-<div class="main-content-title">
+<div class="others">
+    
+    <div class="others-wrapper">
+        <div class="content">
+        
+            <div class="main-content-title">
     代购列表
 </div>
 <?php if ($this->lists) { ?>
@@ -42,6 +46,16 @@
     </tbody>
     </table>
 <?php } ?>
+        </div>  <!-- end content -->
+    </div>
+    
+    <div class="others-wrapper-left">
+        <ul>
+        </ul>
+    </div>
+</div>
+
+
 
 <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/components/datatables/dataTables.css" />
 <script src="<?php echo $this->baseUrl() ?>/public/components/datatables/dataTables.min.js"></script>

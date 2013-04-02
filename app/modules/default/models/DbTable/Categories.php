@@ -6,11 +6,21 @@ class Model_DbTable_Categories extends Zend_Db_Table_Abstract
     protected $_name = 'categories';
 	
     protected $_primary = 'id';
-	
+
+    
     public function getCategories()
     {
         $sql = "SELECT * FROM categories WHERE status = '1'";
         return $this->_db->query($sql)->fetchAll();
+    }
+    
+    
+    public function getCategoryById($id)
+    {
+        //$select = $this->select()->where('id = ?', (int)$id)->where('status = ?', 1);
+        //return $this->fetchRow($select);
+        $sql = "SELECT * FROM categories WHERE id = $id";
+        return $this->_db->query($sql)->fetch();
     }
 	
 	/**
@@ -24,16 +34,7 @@ class Model_DbTable_Categories extends Zend_Db_Table_Abstract
 		return $this->fetchAll($select);
 	}
 
-	/**
-	 * Recupere une categorie par son ID
-	 *
-	 * @return Zend_Db_Table_Row
-	 */
-	public function getCategoryById($id)
-	{
-		$select = $this->select()->where('category_id = ?', (int) $id)->where('is_active = ?', 1)->order('sort ASC');
-		return $this->fetchRow($select);
-	}
+	
 	
 	/**
 	 * Methode qui permet de check si un row exist

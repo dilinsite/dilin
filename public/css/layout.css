@@ -184,3 +184,31 @@ body {
     float: left;
     
 }
+
+.form-edit > form {
+    float: left;
+    margin: 0 10px;
+}
+.block {
+    display: block;
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+.block > label {
+    padding-top: 5px;
+    width: 30%;
+    float: left;
+    font-size: 12px;
+}
+
+.block > div {
+    width: 70%;
+    float: right;
+    font-size: 12px;
+}
+
+.block input, .block select {
+    padding: 3px;
+}

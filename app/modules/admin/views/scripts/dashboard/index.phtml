@@ -32,17 +32,23 @@
         </div>
     </div>
 </div>
-<div class="form-edit-table" style="display: none;">
-    <div class="block">
-        <label>Category</label>
-        <div>categorydd</div>
-    </div>
-    <div class="block">
-        <label>Category</label>
-        <div>categorydd</div>
-    </div>
+<div class="form-edit" style="display: none;">
+    <form>
+        <?php echo $this->category_form->id ?>
+        <div class="block">
+            <label>Controller</label>
+            <div><?php echo $this->category_form->controller ?></div>
+        </div>
+        <div class="block">
+            <label>Category</label>
+            <div><?php echo $this->category_form->name ?></div>
+        </div>
+        <div class="block">
+            <label>Status</label>
+            <div><?php echo $this->category_form->status ?></div>
+        </div>
+    </form>
 </div>
-
 <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/components/datatables/dataTables.css" />
 <script src="<?php echo $this->baseUrl() ?>/public/components/datatables/dataTables.min.js"></script>
 
@@ -53,22 +59,39 @@ $(document).ready(function(){
     $(".edit-row").click(function(e){
         e.preventDefault();
         var id = $(this).attr('id').substr(9);
+        $.ajax({
+            type: "post",
+            url: "/admin/ajax/get-category",
+            data: { 
+                id: id
+            },
+            success: function(response) {
+                if (response.status == 1) {
+                    var data = response.data;
+                    $('input#id').val(data.id);
+                    $('input#name').val(data.name);
+                    $('input#controller').val(data.controller);
+                    $('input#status').val(data.status);
+                }
+            }
+        });
         //$('.dialog-edit-table').empty();
-        $('.form-edit-table').dialog('open');
+        $('.form-edit').dialog('open');
     });
     
-    $(".form-edit-table" ).dialog({
+    $(".form-edit" ).dialog({
         autoOpen: false,
-      modal: true,
-      title: 'EDIT',
-      buttons: {
-        Cancel: function() {
-          $( this ).dialog( "close" ); 
-        },
-        Ok: function() {
-          $( this ).dialog( "close" );
+        modal: true,
+        title: 'EDIT',
+        width: '400',
+        buttons: {
+            Cancel: function() {
+                $( this ).dialog( "close" ); 
+            },
+            Ok: function() {
+                $( this ).dialog( "close" );
+            }
         }
-      }
     });
 });
 </script>

@@ -10,8 +10,15 @@ class Admin_DashboardController extends Zend_Controller_Action
 
     public function indexAction()
     {
+        
+        $category_form = new Admin_Form_Category();
+
         $categories_table = new Model_DbTable_Categories();
+        
+        $this->view->category_form = $category_form;
         $this->view->categories = $categories_table->getCategories();
+        
+        
     }
 
     public function setcookieAction() 

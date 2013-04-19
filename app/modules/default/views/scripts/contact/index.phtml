@@ -1,0 +1,57 @@
+<div class="contact">
+    <div class="contact-wrapper">
+        <div class="content-block">
+            <div class="content-block-title">Contact Me</div>
+            <div class="clear"></div>
+            <div class="content-block-content">
+                <form method="post">
+                    <div class="block">
+                        <label>Your name＊ (你的名字)</label>
+                        <div><?php echo $this->form->name ?></div>
+                    </div>
+                    <div class="block">
+                        <label>Tel＊ (电话)</label>
+                        <div><?php echo $this->form->tel ?></div>
+                    </div>
+                    <div class="block">
+                        <label>Email＊ (电子邮件)</label>
+                        <div><?php echo $this->form->email ?></div>
+                    </div>
+                    <div class="block">
+                        <label>Message＊ (信息)</label>
+                        <div><?php echo $this->form->content ?></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="button" onclick="history.go(-1);">BACK</div>
+                    <div class="button right" id="btnSendMessage" onclick="sendMessage();">
+                        SEND
+                    </div>
+            </form>
+            <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+});
+
+function sendMessage() {
+    $.ajax({
+        type: "post",
+        url: "/admin/ajax/send-message",
+        data: { 
+            name: $('#name').val(),
+            email: $('#email').val(),
+            tel: $('#tel').val(),
+            content: $('#content').val()
+        },
+        success: function(response) {
+            if (response.status == 1) {
+                alert('Thank you for contacting. I will get back to you shortly.')
+            }
+        }
+    });
+}
+</script>

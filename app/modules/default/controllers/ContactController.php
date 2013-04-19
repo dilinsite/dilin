@@ -16,7 +16,7 @@ class ContactController extends Zend_Controller_Action
     }
     
     public function indexAction() {
-       // $this->_helper->redirector('siege');
+        $this->view->form = new Form_Contact(array('method'=>'post'));
     }
     
     public function siegeAction() {

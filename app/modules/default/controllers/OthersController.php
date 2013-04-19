@@ -8,12 +8,14 @@ class OthersController extends Zend_Controller_Action
     {
         //$this->_helper->layout()->disableLayout();
 	//$this->_helper->viewRenderer->setNoRender(true);
-       // $this->_helper->viewRenderer->setResponseSegment('index');
+        //$this->_helper->viewRenderer->setResponseSegment('index');
         $this->view->othersSelected = true;
     }
 
     public function indexAction()
     {
+        $daigous_table = new Model_DbTable_Daigous();
+        $this->view->daigous = $daigous_table->getDaigous();
         /*
         $actionStack = Zend_Controller_Action_HelperBroker::getStaticHelper('actionStack');
         $actionStack->actionToStack('calculate', 'widge');

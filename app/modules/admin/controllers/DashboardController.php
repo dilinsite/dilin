@@ -17,7 +17,9 @@ class Admin_DashboardController extends Zend_Controller_Action
         
         $this->view->category_form = $category_form;
         $this->view->categories = $categories_table->getCategories();
+
         
+       
         
     }
 

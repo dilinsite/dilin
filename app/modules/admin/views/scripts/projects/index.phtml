@@ -1,0 +1,37 @@
+<div class="projects">
+    <div class="projects-wrapper">
+        
+        <div class="content-block">
+            
+            <div class="content-block-title">Categories</div>
+            <div class="add button right add-row"><a>Add a Category</a></div>
+            
+            <?php if ($this->categories) { ?>
+
+                <table class="display" id="table-categories">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Controller</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($this->categories as $row) { ?>
+                        <tr id="cat_<?php echo $row['id'] ?>">
+                            <td><?php echo $row['id'] ?></td>
+                            <td><?php echo $row['controller'] ?></td>
+                            <td><?php echo $row['name'] ?></td>
+                            <td><?php echo $row['status'] ?></td>
+                            <td><a href="#" class="edit-row" id="edit-row-<?php echo $row['id'] ?>">edit</a></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                    </table>
+            <?php } ?>
+        </div>
+    </div>
+</div>

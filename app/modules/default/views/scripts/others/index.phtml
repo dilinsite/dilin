@@ -3,34 +3,47 @@
         
         <div class="content-block">
             
-            <div class="content-block-title">Categories</div>
-            <div class="add button right add-row"><a>Add a Category</a></div>
+            <div class="content-block-title">代购</div>
             
-            <?php if ($this->categories) { ?>
+            <?php if ($this->daigous) { ?>
 
-                <table class="display" id="table-categories">
+                <table id="daigouTable" class="display data_table">
+    
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Controller</th>
-                            <th>Name</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th width="20%">产品名字</th>
+                            <th width="10%">图片</th>
+                            <th width="10%">品牌</th>
+                            <th width="10%">链接</th>
+                            <th width="10%">价格</th>
+                            <th width="10%">数量</th>
+                            <th width="10%">购买人</th>
+                            <th width="10%">状态</th>
+                            <th width="30%">备注</th>
+                            <th nowrap>创建时间</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <?php foreach ($this->categories as $row) { ?>
-                        <tr id="cat_<?php echo $row['id'] ?>">
-                            <td><?php echo $row['id'] ?></td>
-                            <td><?php echo $row['controller'] ?></td>
+                        <?php foreach ($this->daigous as $row) { ?>
+                        <tr>
                             <td><?php echo $row['name'] ?></td>
+                            <td><?php echo $row['has_img'] ?></td>
+                            <td><?php echo $row['brand'] ?></td>
+                            <td><?php if ($row['url']) { ?>
+                                <a href="<?php echo $row['url'] ?>">link</a>
+                            <?php } ?>
+                            </td>
+                            <td><?php echo $row['unit_price'] ?></td>
+                            <td><?php echo $row['quantity'] ?></td>
+                            <td><?php echo $row['buyer'] ?></td>
                             <td><?php echo $row['status'] ?></td>
-                            <td><a href="#" class="edit-row" id="edit-row-<?php echo $row['id'] ?>">edit</a></td>
+                            <td><?php echo $row['note'] ?></td>
+                            <td nowrap><?php echo $row['create_ts'] ?></td>
                         </tr>
                         <?php } ?>
                     </tbody>
-                    </table>
+                </table>
             <?php } ?>
             
         </div>

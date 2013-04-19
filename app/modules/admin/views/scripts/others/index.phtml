@@ -1,11 +1,203 @@
-<div class="albums">
-    <div class="albums-wrapper">
-        <ul>
-        <?php foreach ($this->albums as $album) { ?>
-            <li><img src="/public/images/photos/<?php echo $album['name']; ?>/cover_<?php echo $album['seq'] ?>.jpg"></li>
-        <?php } ?>
-        </ul>
-    </div>
+<div class="dashboard">
+    <div class="dashboard-wrapper">
+        
+        <div class="content-block">
+            
+            <div class="content-block-title">代购</div>
+            <div class="add button right add-daigou"><a>Add a Daigou</a></div>
+            
+            <?php if ($this->daigous) { ?>
+
+                <table id="table-daigous" class="display data_table">
     
-       
+                    <thead>
+                        <tr>
+                            <th width="20%">产品名字</th>
+                            <th width="10%">图片</th>
+                            <th width="10%">品牌</th>
+                            <th width="10%">链接</th>
+                            <th width="10%">单价</th>
+                            <th width="10%">税</th>
+                            <th width="10%">数量</th>
+                            <th width="10%">总价</th>
+                            <th width="10%">购买人</th>
+                            <th width="10%">状态</th>
+                            <th width="30%">备注</th>
+                            <th nowrap>创建时间</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($this->daigous as $row) { ?>
+                        <tr>
+                            <td><?php echo $row['name'] ?></td>
+                            <td><?php echo $row['has_img'] ?></td>
+                            <td><?php echo $row['brand_name'] ?></td>
+                            <td><?php if ($row['url']) { ?>
+                                <a href="<?php echo $row['url'] ?>">link</a>
+                            <?php } ?>
+                            </td>
+                            <td><?php echo $row['unit_price'] ?></td>
+                            <td><?php echo $row['tax'] ?></td>
+                            <td><?php echo $row['quantity'] ?></td>
+                            <td><?php echo ($row['unit_price']+$row['tax'])*$row['quantity'] ?></td>
+                            <td><?php echo $row['buyer'] ?></td>
+                            <td><?php echo $row['status'] ?></td>
+                            <td><?php echo $row['note'] ?></td>
+                            <td nowrap><?php echo date('Y-m-d', strtotime($row['create_ts'])) ?></td>
+                            <td><a href="#" class="edit-row" id="edit-row-<?php echo $row['id'] ?>">edit</a></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            <?php } ?>
+            
+        </div>
+    </div>
 </div>
+<div class="form-daigou" enctype="multipart/form-data" style="display: none;">
+    <form>
+        <?php echo $this->daigou_form->id ?>
+        <div class="block">
+            <label>产品名字</label>
+            <div><?php echo $this->daigou_form->name ?></div>
+        </div>
+        <div class="block">
+            <label>图片</label><div><?php echo $this->daigou_form->has_img ?></div>
+        </div>
+        <div class="block">
+            <label>品牌</label><div><?php echo $this->daigou_form->brand_id ?></div>
+        </div>
+        <div class="block">
+            <label>链接</label><div><?php echo $this->daigou_form->url ?></div>
+        </div>
+        <div class="block">
+            <label>单价</label><div><?php echo $this->daigou_form->unit_price ?></div>
+        </div>
+        <div class="block">
+            <label>税</label><div><?php echo $this->daigou_form->tax ?></div>
+        </div>
+        <div class="block">
+            <label>数量</label><div><?php echo $this->daigou_form->quantity ?></div>
+        </div>
+        <div class="block">
+            <label>购买人</label><div><?php echo $this->daigou_form->buyer ?></div>
+        </div>
+        <div class="block">
+            <label>状态</label><div><?php echo $this->daigou_form->status ?></div>
+        </div>
+        <div class="block">
+            <label>备注</label><div><?php echo $this->daigou_form->note ?></div>
+        </div>
+        
+    </form>
+</div>
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/public/components/datatables/dataTables.css" />
+<script src="<?php echo $this->baseUrl() ?>/public/components/datatables/dataTables.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    
+    addDaigouRow();
+    
+});
+
+function addDaigouRow()
+{
+    $(".add-daigou").click(function(e) {
+        e.preventDefault();
+        
+        form('ADD');
+        $('input').val('');
+        $('.form-daigou').dialog('open');
+    });
+}
+
+
+function form(title) {
+    $(".form-daigou" ).dialog({
+        autoOpen: false,
+        modal: true,
+        title: title,
+        width: '400',
+        buttons: {
+            Cancel: function() {
+                $( this ).dialog( "close" ); 
+            },
+            Ok: function() {
+                if (title === 'ADD') 
+                    addDaigou();
+                if (title === 'EDIT') 
+                    editDaigou(); 
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+}
+
+function addDaigou() {
+    $.ajax({
+        type: "post",
+        url: "/admin/ajax/add-daigou",
+        data: { 
+            //data: $('.form-category form').serialize()
+            name:    $('.form-daigou #name').val(),
+            has_img:    $('.form-daigou #has_img').val(),
+            brand_id:      $('.form-daigou #brand').val(),
+            url:        $('.form-daigou #url').val(),
+            unit_price: $('.form-daigou #unit_price').val(),
+            tax:        $('.form-daigou #tax').val(),
+            quantity:   $('.form-daigou #quantity').val(),
+            buyer:      $('.form-daigou #buyer').val(),
+            status:     $('.form-daigou #status').val(),
+            note:       $('.form-daigou #note').val
+        },
+        success: function(response) {
+            if (response.status == 1) {
+                var id = response.data.id;
+                $('table#table-daigous tbody').append(
+                        '<tr id="dg_' + id + '"><td>' 
+                        + response.data.id + '</td><td>' + $('#has_img').val() + '</td><td>' + $('#brand').val() + '</td><td>' + $('#url').val() + '</td><td>' + '<a href="#" class="edit-row" id="edit-row-' + id + '">edit</a>' + '</td></tr>'
+                );
+                //editRow();
+            }
+        }
+    });
+}
+
+function editRow()
+{
+    $(".edit-row").click(function(e){
+        e.preventDefault();
+        var id = $(this).attr('id').substr(9);
+        $.ajax({
+            type: "post",
+            url: "/admin/ajax/get-daigou",
+            data: { 
+                id: id
+            },
+            success: function(response) {
+                if (response.status == 1) {
+                    var data = response.data;
+                    $('.form-daigou input#id').val(data.id);
+                    $('.form-daigou input#name').val(data.name),
+                    $('.form-daigou input#has_img').val(data.has_img),
+                    $('.form-daigou input#brand').val(data.brand),
+                    $('.form-daigou input#url').val(data.url),
+                    $('.form-daigou input#tax').val(data.tax),
+                    $('.form-daigou input#unit_price').val(data.unit_price),
+                    $('.form-daigou input#quantity').val(data.quantity),
+                    $('.form-daigou input#buyer').val(data.buyer),
+                    $('.form-daigou input#status').val(data.status),
+                    $('.form-daigou input#note').val(data.note)
+                }
+            }
+        });
+        form('EDIT');
+        $('.form-category').dialog('open');
+    });
+}
+
+</script>

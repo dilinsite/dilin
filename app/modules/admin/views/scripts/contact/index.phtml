@@ -3,30 +3,31 @@
         
         <div class="content-block">
             
-            <div class="content-block-title">Categories</div>
-            <div class="add button right add-row"><a>Add a Category</a></div>
+            <div class="content-block-title">Contact Me</div>
             
-            <?php if ($this->categories) { ?>
+            <?php if ($this->messages) { ?>
 
                 <table class="display" id="table-categories">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Controller</th>
                             <th>Name</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Email</th>
+                            <th>Tel</th>
+                            <th>Content</th>
+                            <th>Timestamp</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <?php foreach ($this->categories as $row) { ?>
-                        <tr id="cat_<?php echo $row['id'] ?>">
+                        <?php foreach ($this->messages as $row) { ?>
+                        <tr>
                             <td><?php echo $row['id'] ?></td>
-                            <td><?php echo $row['controller'] ?></td>
                             <td><?php echo $row['name'] ?></td>
-                            <td><?php echo $row['status'] ?></td>
-                            <td><a href="#" class="edit-row" id="edit-row-<?php echo $row['id'] ?>">edit</a></td>
+                            <td><?php echo $row['email'] ?></td>
+                            <td><?php echo $row['tel'] ?></td>
+                            <td><?php echo $row['content'] ?></td>
+                            <td><?php echo $row['create_ts'] ?></td>
                         </tr>
                         <?php } ?>
                     </tbody>

@@ -21,9 +21,10 @@ class Admin_OthersController extends Zend_Controller_Action
     public function indexAction()
     {
         
-        // list albums
-        $albums_table = new Model_DbTable_Albums();
-        $this->view->albums = $albums_table->getAlbums();
+        $this->view->daigou_form = new Form_Daigou();
         
+        // list daigous
+        $daigous_table = new Model_DbTable_Daigous();
+        $this->view->daigous = $daigous_table->getDaigous();
     }
 }

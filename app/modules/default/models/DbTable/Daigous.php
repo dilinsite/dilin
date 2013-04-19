@@ -1,6 +1,6 @@
 <?php
 
-class Model_DbTable_ShoppingLists extends Zend_Db_Table_Abstract
+class Model_DbTable_Daigous extends Zend_Db_Table_Abstract
 {
 
     protected $_name = 'daigous';
@@ -13,6 +13,19 @@ class Model_DbTable_ShoppingLists extends Zend_Db_Table_Abstract
         $sql = "SELECT * FROM " . $this->_name;
         $sql .= " ORDER BY create_ts DESC";
         return $this->_db->query($sql)->fetchAll();
+    }
+    
+    public function getDaigous()
+    {
+        $sql = "SELECT daigous.*, brands.name as brand_name FROM daigous
+                 LEFT JOIN brands ON daigous.brand_id = brands.id 
+                 ORDER BY create_ts DESC";
+        return $this->_db->query($sql)->fetchAll();
+    }
+    
+    public function addDaigou($data)
+    {
+        return $data && is_array($data) ? $this->insert($data) : false;
     }
     
     public function getJobs($limit = null)

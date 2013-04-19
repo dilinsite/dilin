@@ -29,6 +29,67 @@ class Admin_AjaxController extends Zend_Controller_Action
         }
     }
     
+    public function addCategoryAction()
+    {
+        $data = $this->_request->getPost();
+        
+        if ($data) {
+            $category_table = new Model_DbTable_Categories();
+            $id = $category_table->addCategory($data);
+            if ($id) {
+                $this->_helper->json(array('status'=>'1', 'data'=>array('id' => $id)));
+            } else {
+                $this->_helper->json(array('status'=>'0'));
+            }
+        }
+        
+    }
+    
+    public function updateCategoryAction()
+    {
+        $data = $this->_request->getPost();
+        
+        if ($data) {
+            $category_table = new Model_DbTable_Categories();
+            $id = $category_table->updateCategory($data, $data['id']);
+            if ($id) {
+                $this->_helper->json(array('status'=>'1'));
+            } else {
+                $this->_helper->json(array('status'=>'0'));
+            }
+        }
+    }
+    
+    public function addDaigouAction()
+    {
+        $data = $this->_request->getPost();
+        
+        if ($data) {
+            $daigou_table = new Model_DbTable_Daigous();
+            $id = $daigou_table->addDaigou($data);
+            if ($id) {
+                $this->_helper->json(array('status'=>'1', 'data'=>array('id' => $id)));
+            } else {
+                $this->_helper->json(array('status'=>'0'));
+            }
+        }
+    }
+    
+    public function sendMessageAction()
+    {
+        $data = $this->_request->getPost();
+        
+        if ($data) {
+            $contact_table = new Model_DbTable_Contact();
+            $id = $contact_table->addContact($data);
+            if ($id) {
+                $this->_helper->json(array('status' => '1'));
+            } else {
+                $this->_helper->json(array('status' => '0'));
+            }
+        }
+    }
+    
     /**
      * Connect to api and respond back API key and user data
      */

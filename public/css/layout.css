@@ -15,6 +15,32 @@ a:hover, .active > a {
     color: #8f7c47;
 }
 
+.button {
+    background: url('/public/images/bg/bg-med.jpg');
+    padding: 10px 15px;
+    color: #777;
+    border-radius: 1px;
+    border: 1px solid #d3d3d3;
+    display: inline-block;
+}
+
+.button:hover {
+    color: #8f7c47;
+    cursor: pointer;
+    background: url('/public/images/bg/bg-dark.jpg');
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    height: 10px;
+    width: 100%;
+    clear: both;
+}
+
+
 body {
     margin: 0 auto;
     font-family: georgia;
@@ -80,9 +106,8 @@ body {
 
 #navigation ul li {
     float: left;
-    margin-right: 10px;
-    text-align: center;
-    width: 120px;
+    margin-right: 0px;
+    text-align: center; 
     height: 40px;
     background: url('/public/images/bg/bg-med.jpg');
     border-radius: 1px 1px 0px 0px;
@@ -97,8 +122,7 @@ body {
 
 #navigation ul li a {
     display: block;
-    padding: 12px 5px;
-    width:108px;
+    padding: 12px 25px 12px 20px;
     text-align: center;
     font-size: 16px;
 }
@@ -135,14 +159,14 @@ body {
     font-size: 16px;
 }
 
-.dashboard, .index-wrapper, .others-wrapper, .albums-wrapper {
+.dashboard, .projects, .index, .contact, .others-wrapper, .albums-wrapper {
     width: 1000px;
     float: left;
     min-height: 10px;
     background: url('/public/images/bg/bg-light.jpg') repeat;
 }
 
-.dashboard-wrapper {
+.dashboard-wrapper, .projects-wrapper, .index-wrapper, .contact-wrapper {
     padding: 30px 20px;
 }
 
@@ -204,11 +228,66 @@ body {
 }
 
 .block > div {
-    width: 70%;
+    width: 68%;
     float: right;
     font-size: 12px;
 }
 
 .block input, .block select {
     padding: 3px;
+}
+
+.content-block-title {
+    float: left;
+    display: inline-block;
+    font-size: 18px;
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
+
+.content-block-content {
+    width: 100%;
+    float: left;
+    display: block;
+}
+
+input{
+    display: inline-block;
+    height: 18px;
+    padding: 4px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #555;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: white;
+    width: 96%;
+}
+
+
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    -webkit-appearance: textarea;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-image: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    -webkit-box-orient: vertical;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    resize: auto;
+    cursor: auto;
+    padding: 3px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    width: 99%;
+}
+
+.contact input {
+    width: 270px;
 }

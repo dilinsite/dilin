@@ -22,6 +22,33 @@ class Model_DbTable_Categories extends Zend_Db_Table_Abstract
         $sql = "SELECT * FROM categories WHERE id = $id";
         return $this->_db->query($sql)->fetch();
     }
+    
+    /**
+     * Add a category
+     * 
+     * @param array $data Column-value pairs
+     * @return the primary category id added
+     */
+    public function addCategory($data) 
+    {
+        return $data && is_array($data) ? $this->insert($data) : false;
+    }
+    
+    /**
+     * Update a category
+     * 
+     * @param int $id
+     * @param array $data
+     */
+    public function updateCategory($data, $where) 
+    {
+        if ($data && $where) {
+            if (is_numeric($where)) {
+                return $this->update($data, 'id = ' . $where);
+            }
+        }
+        return false;
+    }
 	
 	/**
 	 * Recupere tous les enfants par son parent ID
